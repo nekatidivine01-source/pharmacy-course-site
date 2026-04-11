@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pharmaceutical Chemistry Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Pharmaceutical Chemistry Quiz</h1>
+  <div id="quiz"></div>
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="score"></p>
+
+  <script src="script.js"></script>
+  <script>
+    const questions = [
+      {q: "Identify this compound Ethylcyclohexane (structural formula).png  compound?", options: ["1-Ethyl 2,5-dimethylcyclohexane", "1,4-Dimethyl-3-ethylcyclohexane", "1-Ethyl-2,5-dimethylcyclohexane", "2-Ethyl-1,4-dimethylcyclohexane"], a: "1-Ethyl 2,5-dimethylcyclohexane"},
+      {q: "pH of strong acid solution?", options: ["Low", "Neutral", "High", "Variable"], a: "Low"},
+      {q: "What is a buffer?", options: ["Resists pH change", "Stores energy", "Neutralizes toxins", "Speeds reactions"], a: "Resists pH change"}
+    ];
+    startQuiz(questions);
+  </script>
+</body>
+</html>
+

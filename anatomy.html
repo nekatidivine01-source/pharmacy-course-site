@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Anatomy Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Anatomy Quiz</h1>
+  <div id="quiz"></div>
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="score"></p>
+
+  <script src="script.js"></script>
+  <script>
+    const questions = [
+      {q: "During oral examination of a three year old child, which of the following do you expect not to find in the lower quadrant?", options: ["Two incisors", "One canine", "Two premolars", "Two molars"], a: "Two molars"},
+      {q: "Which layer of the heart wall is described as a thin internal layer or lining membrane that also covers the heart valves?", options: ["Myocardium", "Epicardium", "Endocardium", "Fibrous pericardium"], a: "Endocardium"},
+      {q: "Within the right atrium, the smooth-walled posterior part (sinus venarum) is separated from the rough-walled part by which internal structure?", options: ["The fossa ovalis", "The crista terminalis", "The conus arteriosus", "The chordae tendineae"], a: "The crista terminalis"},
+      {q: "Which layer of the heart makes up the bulk of the heart wall and is responsible for the contraction of the heart?", options: ["Myocardium", "Endocardium", "Parietal pericardium", "Visceral pericardium"], a:"Myocardium"},
+      {q: "The following structure(s) prevent prolapse of the atrioventricular valves?", options: ["Chordae tendinea", "Crista terminals", "trabeculae carneae", "Intercalated discs"], a:"Chordae tendinea"},
+      {q: "All of these structures can be identified in the ventricles EXCEPT?", options: ["Trabeculae carneae", "Papillary muscles", "All of the above", "None of the above"], a:"None of the above"},
+      {q: "The projecting ridges in the ventricular wall giving in the spongy appearance known as:?", options: ["Trabeculae carneae", "Crista terminals", "Musculi pectinati", "Sulcus terminalis"], a:"Trabeculae carneae"},
+      {q: "Pericardial cavity is the gap between?", options: ["Fibrous pericardium and serous pericardium", "Fibrous pericardium and epicardium", "Parietal pericardium and epicardium", "Visceral pericardium and epicardium"], a:"Parietal pericardium and epicardium"},
+      {q: "Regarding the fetal remnants, which of the following is the remnant of the foramen ovale?", options: ["Sulcus terminalis", "Crista terminalis", "Fossa ovalis", "Annulus ovalis"], a:"Fossa ovalis"},
+      {q: "The Nasal cavity is?", options: ["Divided into the right and left sides", "Lined with mucous membranes", "Has tiny-like structures called cilia", "Filters,noistens and heats air for the journey to the lungs","All of the above"], a:"All of the above"},
+      {q: "The nasopharynx is a collection of?", options: ["Lymphatic tissue", "Adenoids", "Pharngeal tonsils", "All of the above"], a:"Pharngeal tonsils"},
+      {q: "The leaf-like structure that seals off the air passage to the lungs during swallowing?", options: ["Soft Palate", "Tongue", "Epiglottis", "All of the above"], a: "Epiglottis"},
+      {q:"Which structure prevents food and liquid from entering the trachea during swallowing?", options: ["Epiglottis", "Larynx", "Pharynx", "Uvula"], a: "Epiglottis"},
+      {q: "Which of following structures is part of the upper respiratory tract?", options: ["Trachea", "Bronchi", "Alveoli", "Larynx"], a: "Larynx"},
+      {q: "What type of cells are responsible for the producting surfactant in the lungs?", options: ["Type 1 alveolar cells", "Type 2 alveolar cells", "Goblets cells", "Ciliated cells"], a: "Type 2 alveolar cells"},
+      {q: "Which of the following is found on the left lung?", options: ["Cardiac notch", "Horizontal fissure", "Oblique fissure", "Superior lobar bronchus","Three lobes"], a: "Cardiac notch"},
+      {q: "Which oblique fissure of the right lung separates which structures?", options: ["Inferior lobe from lingula", "Inferior lobe from both superior and middle lobe", "Inferior lobe from superior lobe only", "Superior lobe from middle lobe"], a:"Production of red blood cells"},
+      {q: "Which structure is not contained within the superior mediastinum?", options: ["Trachea", "Esophagus", "Thymus gland", "Roots of the great vessels"], a:"Esophagus"},
+      {q: "The transverse thoracic plane that divides the mediastinum passes through which anatomical landmarks? ", options: ["Jugular notch and T2 vertebra","Sternal angle and disc between T4/T5","Xiphoid process and T9 vertebra","Costal cartilage of rib 2 and T6 vertebra"], a:"Sternal angle and disc between T4/T5"},
+      {q: "The fibrous pericardium is attached anteriorly to the sternum by which ligaments?", options: ["Sternocostal ligaments", "Sternopericardial ligaments", "Costopericardial ligaments", "Pericardiacophrenic ligaments"], a:"Sternopericardial ligaments"},
+      {q: "Pain from the parietal pericardium is referred to the shoulder and lateral neck because sensory fibers travel via?", options: ["Vagus nerve (CN X)", "Sympathetic trunks", "Phrenic nerves (C3-C5)","Intercostal nerves"], a:"Phrenic nerves (C3-C5)"},
+      {q: "Which surface of the heart forms the cardiac impression on the left lung?", options: ["Anterior (sternocostal) surface", "Diaphragmatic surface","Right pulmonary surface","Left pulmonary surface"], a:"Left pulmonary surface"},
+      {q: "The coronary sulcus separates which chambers of the heart?", options: ["Right atrium from right ventricle", "Left atrium from left ventricle", "Right ventricle from left ventricle", "Atria from ventricles"], a:"Atria from ventricles"},
+      {q: "The anterior interventricular sulcus separates which chambers of the heart?", options: ["Right atrium from right ventricle", "Left atrium from left ventricle", "Right ventricle from left ventricle", "Atria from ventricles"], a:"Right ventricle from left ventricle"},
+      {q: "The septal papillary muscle of the right ventricle is often small or absent, with chordae tendineae arising directly from:?", options: ["Septal wall", "Anterior wall", "Posterior wall", "Apex of the left ventricle"], a:"Septal wall"},
+      {q: "Which valve has two cusps and is also called the bicuspid valve?", options: ["Tricuspid valve","Pulmonary valve","Mitral valve","Aortic valve"], a:"Mitral valve"},
+      {q: "The right and left coronary arteries originate from which anatomical structures?", options:["Coronary sulcus","Coronary sinus","Right and left aortic sinuses","Posterior interventricular sulcus"] , a:"Right and left aortic sinuses"},
+      {q: "The coronary sinus is located in which sulcus of the heart?", options: ["Coronary sulcus", "Anterior interventricular sulcus", "Posterior interventricular sulcus", "Atrioventricular sulcus"], a:"Coronary sulcus"},
+      {q: "The great cardiac vein runs alongside which artery in the anterior interventricular sulcus?", options: ["Right coronary artery", "Left coronary artery", "Anterior interventricular artery", "Circumflex artery"], a:"Anterior interventricular artery"},
+      {q: "Which congenital defect is characterized by failure of closure of the embryonic foramen ovale?", options: ["Ventricular septal defect (VSD)", "Atrial septal defect (ASD)", "Patent ductus arteriosus (PDA)", "Tetralogy of Fallot"], a:"Atrial septal defect (ASD)"},
+      {q: "Which of the following organs are covered by adventitia?", options: ["Ileum", "Esophagus", "Transverse colon", "Sigmoid colon"], a:"Esophagus"},
+      {q: "The heart wall is composed of three distinct layers. Which layer consists of thick, contractile cardiac muscle?", options: ["Endocardium","Myocardium","Epicardium","Visceral pericardium"], a:"Myocardium"},
+      {q: "Where is the apex of the heart located in a typical adult?", options: ["Posterior to the right 5th intercostal space", "Posterior to the left 5th intercostal space", "Directly behind the sternum", "At the level of the T6–T9 vertebrae"], a:"Posterior to the left 5th intercostal space"},
+      {q: "Which chamber of the heart receives deoxygenated blood from the superior vena cava, inferior vena cava, and coronary sinus?", options: ["Right atrium", "Left atrium", "Right ventricle", "Left ventricle"], a:"Right atrium"},
+      {q: "What is the effect of sympathetic stimulation on the heart?", options: ["Reduces heart rate","Constricts coronary vessels","Increases heart rate and force of contraction","Reduces the force of muscle contraction"], a:"Increases heart rate and force of contraction"},
+      {q: "Somatic sensation (pain) from the parietal pericardium is carried by which nerve, and where is it commonly referred?", options: ["Vagus nerve; epigastric region","Sympathetic trunks; left arm and T1–T4 dermatomes", "Phrenic nerve; supraclavicular region of the shoulder", "Intercostal nerves; sternal area"], a:"Phrenic nerve; supraclavicular region of the shoulder"},
+      {q: "Within the right atrium, what internal structure represents the smooth muscular ridge that divides the atrium into two spaces?", options: ["Sulcus terminalis", "Crista terminalis", "Fossa ovalis", "Musculi pectinati"], a:"Crista terminalis"},
+      {q: "Which of the following structures is found specifically within the coronary sulcus?", options: ["Anterior interventricular artery", "Great cardiac vein", "Middle cardiac vein", "Coronary sinus"], a:"Coronary sinus"},
+      {q: "In the right ventricle, what is the specific role of the chordae tendineae?", options: ["To initiate ventricular contraction", "To connect the papillary muscles to the cusps of the tricuspid valve", "To separate the right and left ventricles", "To form the smooth walls of the conus arteriosus"], a:"To connect the papillary muscles to the cusps of the tricuspid valve"},
+      {q: "What is the primary function of the epicardium?", options: ["To provide structural support", "To produce pericardial fluid", "To regulate heart rate", "To contract with the myocardium"], a:"To produce pericardial fluid"},
+      {q: "Cardiac tamponade is a clinical condition described as:", options: ["Inflammation of the pericardium", "Abnormal thickening of the pericardial sac", "Compression of the heart due to excess fluid in the pericardial cavity", "Narrowing of the heart valves"], a:"Compression of the heart due to excess fluid in the pericardial cavity"},];
+       startQuiz(questions);
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biochemistry Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Biochemistry Quiz</h1>
+  <div id="quiz"></div>
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="score"></p>
+
+  <script src="script.js"></script>
+  <script>
+    const questions = [
+      {q: "Building blocks of proteins?", options: ["Sugars", "Amino acids", "Lipids", "Nucleotides"], a: "Amino acids"},
+      {q: "Molecule storing genetic info?", options: ["RNA", "DNA", "Protein", "ATP"], a: "DNA"},
+      {q: "Main energy currency of the cell?", options: ["Glucose", "ATP", "NADH", "Fatty acids"], a: "ATP"}
+    ];
+    startQuiz(questions);
+  </script>
+</body>
+</html>

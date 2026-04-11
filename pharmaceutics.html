@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pharmaceutics Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Pharmaceutics Quiz</h1>
+  <div id="quiz"></div>
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="score"></p>
+
+  <!-- Shared quiz logic -->
+  <script src="script.js"></script>
+
+  <!-- Subject-specific questions -->
+  <script>
+    const questions = [
+      {q: "Which mechanism of filtration uses filters with pores smaller than the particles to be removed?", options:["Impingement","Straining / Sieving","Attractive forces"," Autofiltration","Adsorption",], a:"Straining / Sieving"},
+      {q: "Which mechanism of filtration relies on electrostatic or surface forces to retain particles?", options: ["Impingement", "Straining", "Autofiltration", "Sedimentation","Attractive forces"], a: "Attractive forces"},
+      {q: "According to Darcy's eqaution, which of the following increases the filtration rate?", options: ["Increasing filtrate viscosity", "Increasing cake thickness", "Increasing pressure difference ", "Decreasing filter area",'Decreasing permeability'], a: "Increasing pressure difference"},
+      {q: "Which filter aid forms porous cake and reduces resistance to flow?", options: ["Diatomite", "Nylon", "Cotton wool", "Muslin cloth","Stainless steel"], a: "Diatomite"},
+      {q: "Which device consists of alternating plates and frames and is widely used in industry ?", options: ["Filter press","Filter candle","Sintered Filter","Meta filter","Membrane cartridge"], a:"Filter press"},
+      {q: "Which filtration operates continously and is suitable for large volumes and concentrated slurries?", options: ["Filter press", "Filter leaf", "Sintered Filter", "Gravity filter", "Rotary vacuum filter"], a: "Rotary vacuum filter"},
+      {q: "Which is a major disadvantage of the rotary vacuum filter?", options: ["Continous operation", "Automatic cake removal", "Large capacity", "Presure limitation of about 1 bar","Low capital cost"], a: "Large capacity"},
+      {q: "Which law states that energy required for size reduction is proportional to the new surface area produced?", options: ["Kick's law", "Membrane filtration", "Bond's law", "Newton's law","Rittinger's law","Hooke's law"], a: "Kick's law"},
+      {q: "Which of the following is a common method of size reduction that uses impact forces principle, attrition and uses a rotating hammers?", options: ["Ball mill", "Hammer mill", "Roller mill", "Fluid energy mill","Colloid mill"], a: "Hammer mill"},
+      {q: "Which type of mill is most suitable for producing ultra-fine particles and is suitable for heat sensitive materials?", options: ["Ball mill", "Hammer mill", "Roller mill", "Fluid energy mill","Colloid mill"], a: "Fluid energy mill"},
+      {q: "What is the residue left in the distillation flask typically composed of?", options: ["Volatile substances", "Non-volatile impurities", "Both volatile and non volatile","Non of the above"], a: "Non-volatile impurities"},
+      {q: "Which material property makes size reduction more difficult because the material tends to deform rather than fracture?", options: ["Elasticity", "Toughness", "Brittleness", "Hardness","Porosity"], a: "Elasticity"},
+      {q: "Which mill consists of a hollow rotating cylinder filled with balls used for grinding materials?", options: ["Ball mill", "Hammer mill", "Roller mill", "Fluid energy mill","Cutter mill"], a: "Ball mill"},
+      {q: "Which mill operates on the principle of compression and shearing using a mortar and pestle arrangement?", options: ["Edge runner mill", "Hammer mill", "Ball mill", "Fluid energy mill","End runner mill"], a: "Edge runner mill"},
+      {q: "Which pharmaceutical application benefits from micronized particles for efficient drug delivery to the lungs?", options: ["Tablet coating", "Capsule filling", "Suspension stability", "Dry powder inhaler formulation","Syrup clarification"], a: "Dry powder inhaler formulation"},
+      {q: "What limitation of agitation in sieving?", options: ["High cost", "Cannot be applied to a wide range of particle sizes", "Produces very fine particles", "Suitable for wet powders","Requires compressed air"], a: "Cannot be applied to a wide range of particle sizes"},
+      {q: "Which device uses centrifugal force in gas stream to separate particles from the air ?", options: ["Sieve shaker", "Air separator", "Cyclone sparator", "Bag filter","Filter press"], a: "Cyclone separator"},
+      {q: "Which filter medium is commonly used in bacteria filtration of parental solutions?", options: ["Membrane filter", "Filter paper", "Cotton wool", "Muslin cloth","Glass wool"], a: "Membrane filter"},
+      {q: "Which filttration equipment is simple , inexpensive , and limited to low operating pressures?", options: ["Pressure filter", "Vacuum filter", "Meta filter", "Gravity filter","Rotary filter"], a: "Gravity filter"},
+      {q: "Which is disadvantage of the hammer mill?", options: ["High reduction ratio", "Suitable for fibrous materials", "Generates heat", "Easy to clean","Versatile use"], a: "Generates heat"},
+      {q: "Which type of distillation is best for separating components with close boiling points?", options: ["Simple distillation", "Fractional distillation", "Steam distillation", "Vacuum distillation","Molecular distillation"], a: "Fractional distillation"},
+      {q: "Which distillation method is used for heat-sensitive compounds by reducing the boiling point through low pressure?", options: ["Simple distillation", "Fractional distillation", "Steam distillation", "Vacuum distillation","Molecular distillation"], a: "Vacuum distillation"},
+      {q: "Which distillation technique is used for separating high boiling point compounds by operating at very low pressures?", options: ["Simple distillation", "Fractional distillation", "Steam distillation", "Vacuum distillation","Molecular distillation"], a: "Molecular distillation"},
+      {q: "Which distillation method is used for separating immiscible liquids by utilizing their different boiling points?", options: ["Simple distillation", "Fractional distillation", "Steam distillation", "Vacuum distillation","Molecular distillation"], a: "Steam distillation"},
+      {q: "Which distillation method is suitable for purifying a liquid by removing non-volatile impurities?", options: ["Simple distillation", "Fractional distillation", "Steam distillation", "Vacuum distillation","Molecular distillation"], a: "Simple distillation"},
+      {q: "Which factor must be consiered wgen selecting filtration equipment to prevent problems such as leaching or adsorption?", options: ["Chemical nature of the product", "Operating pressure only", "Cake thickness", "Filter colour","Volume only"], a: "Chemical nature of the product"},
+      {q: "Which drying method is commonly in the pharmaceutical industry to dry heat sensitive materials rapidly using a stream of hot air?", options: ["Tray drying", "Freeze drying", "Spray drying", "Vacuum drying","Drum drying"], a: "Spray drying"},
+      {q: "What is the use of a high-pressure nozzle or a whirling disk in a spray dryer?", options: ["To increase the contact time", "To decrease contact time", "Agitation", "Atomization",], a: "Atomization"},
+      {q: "Which type of water is easiest to remove during drying?", options: ["Bound water", "Equilibrium mixture", "Unbound water", "Adsorbed water",], a: "Unbound water"},
+      {q: "Which of the following is NOT a method of extraction?", options: ["Maceration", "Percolation", "Soxhlet extraction", "Chromatography",], a: "Chromatography"},
+      {q: "Which solvent is ideal for extracting non-polar compounds like oils and fats?", options: ["Water","Ethanol","Hexane","Acetone",], a: "Hexane"},
+      {q: "What is the purpose of supercritical fluid extraction (SFE)?", option: ["To use high temperatures for faster extraction","To extract heat-sensitive compounds using supercritical CO₂","To increase solvent concentration","To reduce extraction time by increasing the pressure"], a: "To extract heat-sensitive compounds using supercritical CO₂"},
+      {q: "In multiple stage extraction, different solvents are used to:", options: ["Pressure and temperature management","Solvent evaporation speed","Size of the filter used","Storage conditions of the final product",], a: "Pressure and temperature management"},
+      {q: "What is the primary goal of filtration in pharmaceutical processes?", options: ["Eliminate pathogens", "To increase viscosity", "To reduce pressure", "To improve solubility",], a: "To eliminate pathogens"},
+      {q: "Which of the following is an advantage of the rotary vacuum filter?", options: ["High mantainance cost", "Continous operation", "Limited capacity", "FRequires frequent cleaning"], a: "Contious operation"},
+      {q: "Which factor does NOT affect filtration rate according to Darcy's equation?", options: ["Temperature", "Surface area", "Filtrate viscosity", "Pressure difference",], a: "Temperature"},
+      {q: "What type of filtration is used to remove oil droplets from alcohol-based preparations?", options: ["Membrane filtration", "Depth filtration", "Solid/Gas filtration", "Fluid/Fluid filtration",], a: "Fluid/Fluid filtration"},
+      {q: "What is the main purpose of brushing during sieving?", options: ["Increase centrifugal force", "Dislodge particles blocking sieve openings", "Increase particle density", "Reduce rotational speed","Convert fine particles to coarse particles"], a: "Dislodge particles blocking sieve openings"},
+      {q: "What is the primary mixing mechanism in powders caused by layers flowing over one another?", options: ["Diffusion", "Convection", "Turbulence", "Shear"], a: "Shear"},
+      {q: "What is the best method to reduce segregation in a powder mix?", options: ["Use particles of different densities", "Increase vibration after mixing", "Reduce particle size and use granulation","Avoid the use of sieves",], a: "Reduce particle size and use granulation"},];
+    startQuiz(questions);
+  </script>
+</body>
+</html>
