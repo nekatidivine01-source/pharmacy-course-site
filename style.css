@@ -1,63 +1,77 @@
-/* General page styling */
+/* style.css */
+
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f9f9f9;
   color: #333;
+  line-height: 1.6;
 }
 
-/* Headings */
+/* Navigation bar */
+nav {
+  background: #4CAF50;
+  padding: 10px 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #FFD700;
+}
+
+/* Page headings */
 h1 {
-  color: #0c0301;
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 20px 0;
+  color: #4CAF50;
 }
 
-/* Quiz container */
-#quiz {
-  margin: 20px 0;
-  padding: 15px;
-  background: #fff;
-  border: 1px solid #ddd;
+/* Content box */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* Buttons */
 button {
-  background: #f90505;
+  background: rgb(0, 0, 0);
   color: white;
   border: none;
-  padding: 10px 20px;
-  margin-top: 10px;
+  padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 button:hover {
-  background: #0056b3;
+  background: #45a049;
 }
 
-/* Score display */
-#score {
-  font-weight: bold;
-  margin-top: 15px;
-}
 
-/* Radio button options */
-label {
-  display: block;
-  margin: 8px 0;
-}
-.name {
-  font-weight: bold;
-  font-style: italic;
-  position: fixed; 
-  top: 10px;
-  left: 10px;
-}
-.name {
-  font-weight: bold;
-  font-style: italic;
-  position: absolute; /* use fixed if you want it to stay when scrolling */
-  top: 10px;
-  left: 10px;
-}
