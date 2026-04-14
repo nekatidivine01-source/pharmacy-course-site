@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Physiology Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Physiology Quiz</h1>
+  <div id="quiz"></div>
+  <button onclick="checkAnswer()">Submit</button>
+  <p id="score"></p>
+
+  <script src="script.js"></script>
+  <script>
+    const questions = [
+      {
+        q: " Why is the sino atrial node (SAN) referred to as the cardiac pacemaker?",
+        options: [" It allows almost immediate transmission of cardiac impulse throughout the entire ventricular system", "It is capable of generation of impulse and conduction of the heart beat", "It determines the rate at which the heart beats", "The speed of conduction of impulse is fastest in SAN"],
+        a: "It determines the rate at which the heart beats"
+      },
+      {
+        q: "ST segment?",
+        options: ["Extends from end of 'S' wave to end of 'T' wave","Extends from the end of 'S' wave to the beginning of 'T' wave","Represents ventricular depolarization","Normal duration is 0.32 sec"],
+        a: "Extends from the end of 'S' wave to the beginning of 'T' wave"
+      },
+      {
+        q: "Main function of hemoglobin?",
+        options: ["Digest food", "Transport oxygen", "Store fat", "Produce hormones"],
+        a: "Transport oxygen"
+      },
+
+{
+     q: "What is the primary role of the kidneys in the body?",
+       options: ["Filter blood", "Produce hormones", "Store urine", "Regulate body temperature"],
+        a: "Filter blood"
+    },
+        
+        {
+      q: "Which hormone regulates blood sugar levels?",
+        options: ["Insulin", "Adrenaline", "Cortisol", "Thyroxine"],
+        a: "Insulin"},
+    {
+        q: "What is the normal pH range of human blood?",
+        options: ["6.8-7.0", "7.35-7.45", "7.5-8.0", "8.0-8.5"],
+        a: "7.35-7.45"
+    },
+    {
+        q: " Hematocrit is ratio of?",
+        options: ["WBC to plasma", "Platelets to plasma", "RBCs to plasma", "Total blood cells to plasma"],
+        a: "RBCs to plasma"
+    },
+    {
+        q: "Which part of the brain controls balance and coordination?",
+        options: ["Cerebrum", "Cerebellum", "Brainstem", "Hypothalamus"],
+        a: "Cerebellum"
+    },
+    {
+        q: "What is the primary function of the respiratory system?",
+        options: ["Digest food", "Transport oxygen", "Remove waste", "Regulate body temperature"],
+        a: "Transport oxygen"
+    },
+    {
+        q: "Which blood type is considered the universal donor?",
+        options: ["A", "B", "AB", "O"],
+        a: "O"
+    },
+    {
+        q: "What is the main function of the liver?",
+        options: ["Filter blood", "Produce bile", "Store glucose", "Regulate body temperature"],
+        a: "Produce bile"
+    },
+    {
+        q: "Which hormone is responsible for the fight-or-flight response?",
+        options: ["Insulin", "Adrenaline", "Cortisol", "Thyroxine"],
+        a: "Adrenaline"
+    },
+    {
+        q: "What is the normal range of heart rate for adults (beats per minute)?",
+        options: ["60-100", "100-120", "120-140", "140-160"],
+        a: "60-100"
+    },
+    {
+        q: "Which organ is responsible for producing insulin?",
+        options: ["Liver", "Pancreas", "Kidneys", "Adrenal glands"],
+        a: "Pancreas"
+    },
+    {
+        q: "What is the primary function of the immune system?",
+        options: ["Digest food", "Transport oxygen", "Fight infections", "Regulate body temperature"],
+        a: "Fight infections"
+    }
+,{
+        q: "All statements are correct about A-V valves except?",
+        options: ["They prevent the backward flow of blood from ventricles to atria during systole", "These valves close and open passively with the pressure gradient forces", " Opening of these valves is responsible for the first heart sound", 
+"Chordae tendineae are attached to the free edges of the valve flaps"],
+        a: " Opening of these valves is responsible for the first heart sound"
+    },
+    {
+        q:"Which statement is false concerning blood supply to renal tubules?",
+        options: ["Glomerular capillaries are the only capillaries in the body that drain into arterioles","Tubules of each nephron receive blood supply only from the efferent arteriole of that nephron","Total surface area of renal capillaries-is equal to the total surface area of the tubules", "Pressure in renal vein is about 4 mmHg"],
+
+        a:"Glomerular capillaries are the only capillaries in the body that drain into arterioles"
+    },
+    {
+        q: "Na-K-2CI cotransporter is active in the segment?",
+        options: ["Proximal convoluted tubule", "Descending limb of loop of Henle","Thin ascending limb of loop of Henle ", "Thick ascending limb of loop of Henle"],
+        a: "Thick ascending limb of loop of Henle"
+    }
+    ,{
+        q:"In which way does the obligatory reabsorption of water differ from facultative water reabsorption the kidneys?",
+        options: [" Occurs by active processes"," Responsible for 75-80% of filtered water reabsorption ", " influenced by ADH ", "Occurs in the terminal DCT and CT"],
+        a: " Responsible for 75–80% of filtered water reabsorption"
+    },
+    {
+        q: "Which of the following statement is incorrect?",
+        options: ["Counter-current flow in the vasa recta minimizes solute loss from the medulla of the Kidney", " There is a net movement of water out of the descending loop of Henle", " The thick ascending loop of Henle is highly permeable to water", " Blood flow through the vasa recta is very low"],
+        a:"Counter-current flow in the vasa recta minimizes solute loss from the medulla of the kidney"
+    },
+    {
+        q: "Which statement is correct about achalasia cardia?",
+        options: ["Accumulation of food in the oesophagus", "Relaxation of cardiac sphincter ", "Decreased response of lower oesophageal sphincter to circulating gastrin ","Increase in number of nitric oxide neurons in the lower oesophagus"],
+        a: "Accumulation of food in the oesophagus"
+    },
+    {
+        q: " In which of the following blood vessels is the velocity of blood flow the slowest?",
+        options: ["Arteries", "Aorta", "Capillaries", "Veins"],
+        a: "Capillaries"
+    },
+    {
+        q: " Which of the following factors most directly determines blood flow through a blood vessel, according to Poiseuille's law?",
+        options: ["Vessel length", "Vessel radius", "Blood viscosity", "Blood pressure"],
+         a: "Vessel radius"
+    },
+    {
+        q: " What does an FEV1/FVC ratio above 80% suggest in a clinical context?",
+        options: ["Obstructive lung disease such as COPD or asthma", "Normal or restrictive lung disease, depending on other parameters", " Severe airflow limitation due to emphysema", " Increased airway resistance due to bronchoconstriction"],
+        a: "Normal or restrictive lung disease, depending on other parameters"
+    },
+    {
+        q: " Which of the following is a common symptom of hyperthyroidism?",
+        options: [" Weight gain", " Fatigue", " Heat intolerance", " Cold intolerance"],
+        a: "Heat intolerance"
+    },
+    {
+        q: " During which phase of the cardiac cycle are the atrioventricular (AV) valves open and the semilunar valves closed",
+        options: [" Ventricular ejection ", "Isovolumetric contraction ", "Ventricular filling ", " Isovolumetric relaxation"],
+        a:"Ventricular filling"
+    },
+    {
+        q: ". Which of the following is the primary factor determining the movement of fluid out of capillaries into the interstitial space?",
+        options: ["Osmotic pressure of blood proteins ", "Hydrostatic pressure within the capillary","Pressure in the surrounding tissue", " Venous return"],
+        a: "Hydrostatic pressure within the capillary"
+    },
+    {
+        q: "The primary effect of parasympathetic stimulation on the heart is?",
+        options: ["Increased heart rate and stroke volume", "Decreased heart rate", "Increased conduction velocity through the AV node", "Increased cardiac output "],
+        a: "Decreased heart rate"
+    },
+    {
+        q: "Which of the following is a characteristic feature of type 1 diabetes mellitus?",
+        options: ["Insulin resistance", "Autoimmune destruction of pancreatic beta cells", "Obesity-related insulin resistance", "Gradual onset in adulthood"],
+        a: "Autoimmune destruction of pancreatic beta cells"
+    },
+    {
+        q: "In Poiseuille's law, which of the following is inversely related to blood flow (Q)?",
+        options: [" Vessel radius (r)", "Vessel lenght","Vessel diameter",],
+        a: "Vessel length (L)"
+    },
+    {
+        q: "Which component of the blood is primarily responsible for blood clot formation?",
+        options: [" Red blood cells", "Platelets", " Plasma proteins", "White blood cells"],
+        a: "Platelets"
+    },   
+    {
+        q: " Which of the following is true about residual volume (RV)?",
+        options: ["It can be measured directly using spirometry", "It is the air left in the lungs after a maximal expiration"," It decreases in obstructive lung diseases","It contributes to inspiratory capacity"],
+        a: "It is the air left in the lungs after a maximal expiration"
+    },
+    {
+        q: "Which of the following is an example of innate immunity?",
+        options: ["Antibody production", " Cytotoxic T cells activation", "Complement activation", " Memory B cells activation"],
+        a: "Complement activation"
+    },
+    {
+        q: " Which of the following is a hallmark of systolic heart failure?",
+        options: ["Increased ejection fraction ", "Decreased ejection fraction and impaired contractility", "Impaired ventricular relaxation", "Increased ventricular compliance "],
+        a: "Decreased ejection fraction and impaired contractility"
+    },
+    {
+        q: "Which immunoglobulin is primarily involved in allergic reactions and defense against parasitic infections?",
+        options: ["lgE", "lgG", "lgA", "lgM"],
+        a: "lgE"
+    },
+    {
+    q: ". Which of the following hormones reduces blood pressure by increasing sodium and water excretion?",
+        options: ["Aldosterone", "Antidiuretic hormone (ADH) ","Atrial natriuretic peptide (ANP)"," Epinephrine"],
+        a: "Atrial natriuretic peptide (ANP)"
+    },
+    {
+        q: "Which of the following is a characteristic feature of chronic obstructive pulmonary disease (COPD)?",
+        options: ["Reversible airflow obstruction", "Progressive airflow obstruction that is not fully reversible", "Increased lung compliance", " Decreased mucus production"],
+        a: "Progressive airflow obstruction that is not fully reversible"
+    },
+    {
+        q: ". What is the effect of angiotensin II on blood vessels in the context of blood pressure regulation?",
+        options: ["It causes vasodilation and lowers blood pressure", "It stimulates vasoconstriction and raises blood pressure", " It increases capillary permeability", " It decreases heart rate and contractility"],
+        a: "It stimulates vasoconstriction and raises blood pressure"
+    
+    },
+    {
+        q: "In veins, which of the following mechanisms aids in returning blood to the heart?",
+        options: [" High blood pressure", " Elastic recoil of the vein walls", "Skeletal muscle contraction and venous valves", "Active transport of blood"],
+        a: "Skeletal muscle contraction and venous valves"
+    },
+    {
+        q: "Which of the following is true about lung compliance?",
+        options: ["It is inversely proportional to elastance", "It is unaffected by surface tension in alveoli ", "It increases with pulmonary fibrosis", "It decreases with emphysema  "],
+        a: "It is inversely proportional to elastance"
+    },
+    {
+        q: "Which of the following types of shock results from severe loss of blood volume?",
+        options: ["Cardiogenic shock", "Septic shock", "Hypovolemic shock", " Neurogenic shock "],
+        a: "Hypovolemic shock"
+    },
+    {
+        q: "What is the main function of the dorsal respiratory group (DRG)?",
+        options: [" Control forced expiration through accessory muscles", "Regulate rhythmic contraction of diaphragm and intercostal muscles for inspiration", " Adjust pleural fluid levels for maintaining negative pressure ", " Increase compliance during deep breathing"],
+        a: "Regulate rhythmic contraction of diaphragm and intercostal muscles for inspiration"
+    },
+    {
+        q: "What is the formula for calculating Total Lung Capacity (TLC)?",
+        options: ["TV + IRV + ERV ", "TV + IRV + ERV + RV", "TV + RV + FRC ", " ERV + RV "],
+        a: "TV + IRV + ERV + RV"
+    },
+    {
+        q: " Which part of the gastrointestinal tract is responsible for the majority of iron absorption?",
+        options: ["Stomach", "Duodenum", "Jejunum", "Ileum","Colon"],
+        a: "Duodenum"
+    },
+    {
+        q: ". Which hormone is responsible for the development of male secondary sexual characteristics?",
+        options: ["Testosterone", "Estrogen", "Progesterone", "Dihydrotestosterone (DHT)"],
+        a: "Testosterone"
+    },
+    {
+        q: "State the role of bile in the digestive system.?",
+        options: ["Emulsifies fats for absorption", "To break down proteins", "To absorb carbohydrates ", " To neutralize stomach acid "], 
+        a: "Emulsifies fats for absorption"
+    },
+    {
+        q: ",Difficulty in swallowing is characterized by which condition?",
+        options: ["Dysphagia", " Odynophagia", "Gastroesophageal reflux disease (GERD)", "Achalasia"],
+        a: "Dysphagia"
+        
+    },
+        {
+            q: "What is the role of the migrating motor complex (MMC) in the gastrointestinal tract?",
+            options: ["To regulate gut motility during fasting ", " To stimulate digestive enzyme secretion", " To absorb nutrients", " to produce hormones"],
+            a: "To regulate gut motility during fasting"
+        },
+        {
+            q: "Which of the following is a common symptom of gastroesophageal reflux disease (GERD)?",
+            options: ["Heartburn", " Diarrhea", " Constipation", " Abdominal pain"],
+            a: "Heartburn"
+        },
+        {
+            q: " Which hormone is involved in the regulation of circadian rhythms?",
+            options: ["Melatonin", "Cortisol", "Insulin", "Thyroid hormone"],
+            a: "Melatonin"
+        },
+        {
+            q: " What is the role of inhibin in the regulation of the reproductive system?",
+            options: ["Inhibits FSH production", "Stimulates LH production", "Inhibits LH production", "Stimulates FSH production"],
+            a: "Inhibits FSH production"
+        },
+        {
+            q: ". State the effect of thyroid hormone on the heart?",
+            options: ["Increases heart rate", "Decreases heart rate", "Has no effect on heart rate", "Causes irregular heartbeat"],
+            a: "Increases heart rate"
+        },     
+    {
+            q: "What is the role of oxytocin in childbirth?",
+            options: ["Stimulates uterine contractions","Regulates blood pressure ", "Controls body temperature", " Increases milk production"],
+            a: "Stimulates uterine contractions"
+        },
+        {
+            q: "What is the primary function of the hypothalamus in the endocrine system?",
+            options: ["To produce hormones that regulate the pituitary gland", " To secrete digestive enzymes", " To regulate blood glucose levels", " To control body temperature"],
+            a: "To produce hormones that regulate the pituitary gland"
+        },
+    {        q: "Which of the following is a characteristic feature of Cushing's syndrome?",
+        options: ["Weight loss", " Fatigue", " Hyperpigmentation", "Weight gain and moon face"],
+        a: "Weight gain and moon face"
+    },
+    {
+        q: "Which of the following structures is classified as part of the respiratory zone functionally, but is also part of the lower respiratory system structurally?",
+options: ["Terminal bronchioles", "Trachea", "Respiratory bronchioles", "Pharynx"],
+a: "Respiratory bronchioles"
+},
+{
+        q: "The cough reflex sequence involves specific mechanical steps. Which of the following best describes the physiological state just before air is expelled at high velocity?",
+options: ["Glottis remains open while abdominal muscles relax", "Inspiration followed by glottis closure and abdominal muscle contraction", "Expiration against an open glottis with thoracic expansion", "Reflex inhibition of the phrenic nerve and glottis dilation"],
+a: "Inspiration followed by glottis closure and abdominal muscle contraction"
+},
+{
+        q: "According to Laplace’s law mentioned in the text, what is the primary role of surfactant secreted by Type II alveolar cells?",
+options: ["To increase the thickness of the respiratory membrane", "To increase surface area for Fick's Law optimization", "To reduce surface tension and prevent alveolar collapse", "To phagocytose pathogens and debris"],
+a: "To reduce surface tension and prevent alveolar collapse"
+},
+{
+        q: "Which pathological condition is specifically defined by the accumulation of pus within the intrapleural space?",
+options: ["Hydrothorax", "Hemothorax", "Pneumothorax", "Pyothorax"],
+a: "Pyothorax"
+},
+{
+        q: "In the regulation of pulmonary blood flow, how does the pulmonary vasculature react to localized hypoxia, and what is the physiological objective?",
+options: ["Vasodilation to increase O2 uptake", "Vasoconstriction to redirect blood to better-ventilated areas", "Vasodilation to reduce right ventricular workload", "Vasoconstriction to increase vascular resistance across all zones"],
+a: "Vasoconstriction to redirect blood to better-ventilated areas"
+},
+{
+        q: "Which afferent nerves are responsible for carrying the sensory trigger for the cough reflex to the medullary center?",
+options: ["Trigeminal and Olfactory nerves", "Vagus, Trigeminal, and Glossopharyngeal nerves", "Phrenic and Spinal motor nerves only", "Facial and Hypoglossal nerves"],
+a: "Vagus, Trigeminal, and Glossopharyngeal nerves"
+},
+{
+        q: "What is the primary reason that normal expiration is considered a passive process compared to inspiration?",
+options: ["It requires more ATP to move air out of the lungs", "It relies on the elastic recoil of the lungs and chest wall", "The intrapleural pressure becomes more negative during expiration", "It is driven primarily by the contraction of internal intercostal muscles"],
+a: "It relies on the elastic recoil of the lungs and chest wall"
+},
+{
+        q: "The respiratory membrane is optimized for rapid gas diffusion. Based on the text, which of the following is NOT a component of this membrane?",
+options: ["Type I alveolar cells", "Surfactant", "Capillary membrane", "Terminal bronchiole epithelium"],
+a: "Terminal bronchiole epithelium"
+},
+{
+        q: "During the pharyngeal stage of swallowing, what occurs to prevent the aspiration of food into the respiratory tract?",
+options: ["The glottis opens and the diaphragm contracts", "Deglutition apnea occurs via reflex inhibition", "The cough reflex is triggered immediately", "External respiration increases to maintain O2 levels"],
+a: "Deglutition apnea occurs via reflex inhibition"
+},
+{
+        q: "Which anatomical feature distinguishes pulmonary circulation from systemic circulation to allow for low-pressure gas exchange?",
+options: ["Thick-walled arteries with high resistance", "Underdeveloped smooth muscle in arterioles and high distensibility", "Smaller capillary diameters to slow down blood flow", "Higher vascular resistance to match left ventricular output"],
+a: "Underdeveloped smooth muscle in arterioles and high distensibility"
+},
+{
+        q: "Which of the following muscles is primarily responsible for rib elevation and increasing thoracic volume during normal inspiration?",
+options: ["Internal intercostals", "Abdominal muscles", "External intercostals", "Diaphragm only"],
+a: "External intercostals"
+},
+{
+        q: "During the production and release of pulmonary surfactant, where are the phospholipids and proteins stored before being released via exocytosis into the alveolar space?",
+options: ["The endoplasmic reticulum", "Tubular myelin meshwork", "Lamellar bodies", "Alveolar dust cells"],
+a: "Lamellar bodies"
+},
+{
+        q: "The lungs have a natural tendency to collapse inward. What are the two primary factors contributing to this inward pull?",
+options: ["Intrapleural pressure and surfactant", "Elastic recoil of tissues and alveolar surface tension", "Boyle's law and intra-alveolar pressure", "Negative pressure and calcium ions"],
+a: "Elastic recoil of tissues and alveolar surface tension"
+},
+{
+        q: "Based on the functional description of surfactant and Laplace's Law, how does it effectively stabilize alveoli of different sizes?",
+options: ["By increasing pressure in larger alveoli to match smaller ones", "By equalizing surface tension across all alveoli regardless of size", "By reducing surface tension more significantly in smaller alveoli", "By thickening the alveolar membrane in smaller sacs"],
+a: "By reducing surface tension more significantly in smaller alveoli"
+},
+{
+        q: "Which clinical condition is characterized by an increase in lung compliance due to the destruction of alveoli and the subsequent loss of elastic recoil?",
+options: ["Kyphosis", "Pneumothorax", "Emphysema", "Fibrotic pleurisy"],
+a: "Emphysema"
+},
+{
+        q: "Which specific surfactant proteins are described as hydrophobic and are essential for the structural spread and stability of the surfactant film?",
+options: ["SP-A and SP-D", "SP-B and SP-C", "DPPC and Triglycerides", "Calcium ions and SP-A"],
+a: "SP-B and SP-C"
+},
+{
+        q: "In normal quiet breathing, why is expiration classified as a 'passive' process?",
+options: ["It requires the contraction of internal intercostal muscles", "It depends on the active expansion of the thoracic cage", "It relies on the stored elastic potential and recoil of the lungs and chest wall", "Intra-alveolar pressure remains significantly higher than atmospheric pressure at all times"],
+a: "It relies on the stored elastic potential and recoil of the lungs and chest wall"
+},
+{
+        q: "How does 'static compliance' differ from 'dynamic compliance' in a clinical measurement setting?",
+options: ["Static compliance is measured while air is actively flowing", "Dynamic compliance only accounts for elastic resistance", "Static compliance measures expansibility at the end of inspiration or expiration when airflow is zero", "Dynamic compliance is generally higher because it ignores airway resistance"],
+a: "Static compliance measures expansibility at the end of inspiration or expiration when airflow is zero"
+},
+{
+        q: "What is the primary role of the negative intrapleural pressure (-4 mmHg) found in the pleural cavity?",
+options: ["To push air out of the lungs during expiration", "To pull the lungs outward against their natural recoil to maintain expansion", "To equalize with atmospheric pressure during rest", "To facilitate the secretion of surfactant from Clara cells"],
+a: "To pull the lungs outward against their natural recoil to maintain expansion"
+},
+{
+        q: "Apart from Type II alveolar cells (pneumocytes), which other cells contribute to the secretion of pulmonary surfactant components?",
+options: ["Type I pneumocytes", "Clara cells", "Alveolar dust cells", "Vascular endothelial cells"],
+a: "Clara cells"
+},
+    ];      
+    startQuiz(questions);
+  </script>
+</body>
+</html>
